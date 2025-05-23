@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.table {
+    background-color: #2d5a27;
+    border-radius: 200px;
+    padding: 40px;
+    min-height: 600px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+.community-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.player-area {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.player-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 140px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-back {
+    background: linear-gradient(45deg, #1a237e 25%, #283593 25%, #283593 50%, #1a237e 50%, #1a237e 75%, #283593 75%, #283593 100%);
+    background-size: 20px 20px;
+    border: 2px solid #fff;
+}
+
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #fff 0%, #fff 40%, transparent 40%);
+    border-radius: 50%;
+}
+
+.card-back::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.1) 55%, transparent 55%);
+}
+
+.player-info {
+    color: white;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    display: flex;
+    gap: 20px;
+}
+
+.betting-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.action-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.danger-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #45a049;
+}
+
+.action-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.betting-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#bet-input {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.snipe-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.snipe-panel.active {
+    display: block;
+}
+
+.snipe-panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.snipe-panel h2 {
+    margin: 0;
+    text-align: center;
+    color: #ffd700;
+}
+
+.snipe-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.snipe-option-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.hand-type {
+    flex: 1;
+    padding: 10px;
+    background-color: #2c3e50;
+    border: 2px solid #34495e;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hand-type option {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.card-value {
+    width: 80px;
+    padding: 10px;
+    background-color: #2c3e50;
+    border: 2px solid #34495e;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-value option {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.hand-type:hover, .card-value:hover {
+    background-color: #34495e;
+    border-color: #3498db;
+}
+
+#snipe-confirm-btn {
+    padding: 10px;
+    background-color: #27ae60;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#snipe-confirm-btn:hover {
+    background-color: #2ecc71;
+}
+
+#no-snipe-btn {
+    padding: 10px;
+    background-color: #c0392b;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#no-snipe-btn:hover {
+    background-color: #e74c3c;
+}
+
+.game-header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.game-phase-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffd700;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.rules-btn {
+    padding: 10px 20px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.rules-btn:hover {
+    background-color: #777;
+}
+
+.rules-btn.active {
+    background-color: #4a90e2;
+}
+
+.rules-btn.active:hover {
+    background-color: #357abd;
+}
+
+.rules-panel {
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+    display: none;
+}
+
+.rules-panel.active {
+    left: 0;
+    display: block;
+}
+
+.rules-content {
+    padding: 20px;
+}
+
+.rules-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 10px;
+}
+
+.rules-content h3 {
+    color: #444;
+    margin: 20px 0 10px;
+}
+
+.rules-content ol, .rules-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.rules-content li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.rules-content ul {
+    list-style-type: disc;
+}

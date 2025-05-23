@@ -1,0 +1,26 @@
+{
+  "name": "sniper-holdem",
+  "version": "1.0.0",
+  "description": "A poker game with a unique snipe mechanic",
+  "main": "game.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "extensionsToTreatAsEsm": [".js"],
+    "testMatch": ["**/tests/**/*.test.js"]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

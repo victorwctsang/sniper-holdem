@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sniper Hold'em</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-phase-title">Pre-Flop</div>
+        <div class="table">
+            <div class="community-cards">
+                <div class="card card-back"></div>
+                <div class="card card-back"></div>
+                <div class="card card-back"></div>
+                <div class="card card-back"></div>
+            </div>
+            <div class="player-area">
+                <div class="player-cards">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+                <div class="player-info">
+                    <div>Player Chips: <span id="player-chips">60</span></div>
+                    <div>Current Bet: <span id="current-bet">0</span></div>
+                </div>
+                <div class="betting-controls">
+                    <button id="ready-btn" class="action-btn">Ready</button>
+                    <div class="betting-inputs">
+                        <input type="number" id="bet-input" min="1" max="60" value="1">
+                        <button id="bet-btn" class="action-btn">Bet</button>
+                        <button id="check-btn" class="action-btn">Check</button>
+                        <button id="fold-btn" class="action-btn">Fold</button>
+                    </div>
+                    <button id="snipe-btn" class="danger-btn">Snipe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snipe Panel -->
+    <div id="snipe-panel" class="snipe-panel">
+        <div class="snipe-panel-content">
+            <h2>Choose a Hand to Snipe</h2>
+            <div class="snipe-options">
+                <div class="snipe-option-group">
+                    <select id="hand-type" class="hand-type">
+                        <option value="">Select a hand type...</option>
+                        <option value="four-of-a-kind">Four of a Kind</option>
+                        <option value="full-house">Full House</option>
+                        <option value="straight">Straight</option>
+                        <option value="three-of-a-kind">Three of a Kind</option>
+                        <option value="two-pairs">Two Pairs</option>
+                        <option value="one-pair">One Pair</option>
+                        <option value="high-card">High Card</option>
+                    </select>
+                    <select class="card-value">
+                        <option value="1">Ace</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+            <button id="snipe-confirm-btn" class="action-btn">Confirm Snipe</button>
+            <button id="no-snipe-btn" class="action-btn">Don't Snipe</button>
+        </div>
+    </div>
+
+    <script type="module" src="game.js"></script>
+</body>
+</html>
